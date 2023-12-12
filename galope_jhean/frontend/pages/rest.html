@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARS</title>
+    <link rel="stylesheet" href="./mark.css" />
+  </head>
+  <body>
+    <h1>Car Details</h1>
+    <form id="car_form">
+      <label for="brand">Brand:</label>
+      <input type="text" id="brand" placeholder="Enter Car Brand" required />
+
+      <label for="model">Model:</label>
+      <input type="text" id="model" placeholder="Enter Car Model" required />
+
+      <label for="year">Year made:</label>
+      <input type="text" id="year" placeholder="Enter Year Made" required />
+
+      <label for="transmission">Transmission:</label>
+      <input
+        type="text"
+        id="transmission"
+        placeholder="Enter Transmission type"
+        required
+      />
+
+      <label for="fuel">Fuel Type:</label>
+      <input type="text" id="fuel" placeholder="Enter Fuel type" required />
+
+      <button type="button" onclick="createCar()">Create</button>
+    </form>
+
+    <h2>Car Table</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Year made</th>
+            <th>Engine Type</th>
+            <th>Fuel Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="car_table"></tbody>
+      </table>
+    </div>
+    <script src="mark.js"></script>
+  </body>
+</html>
