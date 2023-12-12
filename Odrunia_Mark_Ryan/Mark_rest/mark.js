@@ -13,16 +13,15 @@ function createCar() {
   formData.append("transmission", transmission);
   formData.append("fuel", fuel);
 
-  fetch(
-    "https://exercise.projectvrzn.online/Odrunia_Mark_Ryan/odrunia_back_end.php",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formData,
-    }
-  )
+  const api =
+    "https://exercise.projectvrzn.online/Odrunia_Mark_Ryan/odrunia_back_end.php";
+  fetch(api, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: formData,
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -36,16 +35,13 @@ function deleteCar(carId) {
   formData.append("action", "delete");
   formData.append("carId", carId);
 
-  fetch(
-    "https://exercise.projectvrzn.online/Odrunia_Mark_Ryan/odrunia_back_end.php",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formData,
-    }
-  )
+  fetch(api, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: formData,
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -64,16 +60,13 @@ function updateCar(carId, updatedCarDetails) {
   formData.append("transmission", updatedCarDetails.transmission);
   formData.append("fuel", updatedCarDetails.fuel);
 
-  fetch(
-    "https://exercise.projectvrzn.online/Odrunia_Mark_Ryan/odrunia_back_end.php",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formData,
-    }
-  )
+  fetch(api, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: formData,
+  })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -83,12 +76,9 @@ function updateCar(carId, updatedCarDetails) {
 }
 
 function getCars() {
-  fetch(
-    "https://exercise.projectvrzn.online/Odrunia_Mark_Ryan/odrunia_back_end.php",
-    {
-      method: "GET",
-    }
-  )
+  fetch(api, {
+    method: "GET",
+  })
     .then((response) => response.json())
     .then((data) => {
       displayCars(data);
