@@ -8,8 +8,7 @@
         $username = "u583832022_api_vrzn";
         $password = "=OCqbuo~x3M";
         $dbname = "u583832022_db_vrzn";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-    
+        $conn = new mysqli($servername, $username, $password, $dbname); 
         if ($conn->connect_error) {
             return "Connection failed: " . $conn->connect_error;
         }
@@ -52,7 +51,6 @@
         $password = "=OCqbuo~x3M";
         $dbname = "u583832022_db_vrzn";
         $conn = new mysqli($servername, $username, $password, $dbname);
-
         if ($conn->connect_error) {
             return "Connection failed: " . $conn->connect_error;
         }
@@ -87,8 +85,7 @@
         $username = "u583832022_api_vrzn";
         $password = "=OCqbuo~x3M";
         $dbname = "u583832022_db_vrzn";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-    
+        $conn = new mysqli($servername, $username, $password, $dbname); 
         if ($conn->connect_error) {
             return "Connection failed: " . $conn->connect_error;
         }
@@ -130,7 +127,6 @@
         $password = "=OCqbuo~x3M";
         $dbname = "u583832022_db_vrzn";
         $conn = new mysqli($servername, $username, $password, $dbname);
-    
         if ($conn->connect_error) {
             return "Connection failed: " . $conn->connect_error;
         }
