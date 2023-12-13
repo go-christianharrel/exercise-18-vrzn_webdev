@@ -97,19 +97,19 @@ function displayCars(cars) {
     idCell.textContent = car.ID;
 
     const brandCell = document.createElement("td");
-    brandCell.textContent = car.Brand;
+    brandCell.textContent = car.brand;
 
     const modelCell = document.createElement("td");
-    modelCell.textContent = car.Model;
+    modelCell.textContent = car.model;
 
     const yearCell = document.createElement("td");
-    yearCell.textContent = car.YearMade;
+    yearCell.textContent = car.year_made;
 
     const engineCell = document.createElement("td");
-    engineCell.textContent = car.TransmissionType;
+    engineCell.textContent = car.transmission_type;
 
     const fuelCell = document.createElement("td");
-    fuelCell.textContent = car.FuelType;
+    fuelCell.textContent = car.fuel_type;
 
     const actionsCell = document.createElement("td");
 
@@ -118,31 +118,31 @@ function displayCars(cars) {
     updateBtn.className = "update-button"; //
     updateBtn.onclick = function () {
       const updatedCarDetails = {
-        brand: car.Brand,
-        model: car.Model,
-        year: car.YearMade,
-        transmission: car.TransmissionType,
-        fuel: car.FuelType,
+        brand: car.brand,
+        model: car.model,
+        year: car.year_made,
+        transmission: car.transmission_type,
+        fuel: car.fuel_type,
       };
 
-      updatedCarDetails.brand = prompt("Enter updated brand:", car.Brand);
-      updatedCarDetails.model = prompt("Enter updated model:", car.Model);
-      updatedCarDetails.year = prompt("Enter updated year:", car.YearMade);
+      updatedCarDetails.brand = prompt("Enter updated brand:", car.brand);
+      updatedCarDetails.model = prompt("Enter updated model:", car.model);
+      updatedCarDetails.year = prompt("Enter updated year:", car.year_made);
       updatedCarDetails.transmission = prompt(
         "Enter updated transmission type:",
-        car.TransmissionType
+        car.transmission_type
       );
       updatedCarDetails.fuel = prompt(
         "Enter updated fuel type:",
-        car.FuelType
+        car.fuel_type
       );
 
       if (
-        updatedCarDetails.brand !== null &&
-        updatedCarDetails.model !== null &&
-        updatedCarDetails.year !== null &&
-        updatedCarDetails.transmission !== null &&
-        updatedCarDetails.fuel !== null
+        updatedCarDetails.brand &&
+        updatedCarDetails.model &&
+        updatedCarDetails.year &&
+        updatedCarDetails.transmission &&
+        updatedCarDetails.fuel
       ) {
         updateCar(car.ID, updatedCarDetails);
       }
