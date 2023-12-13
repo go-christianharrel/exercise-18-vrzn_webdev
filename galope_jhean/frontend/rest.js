@@ -115,7 +115,6 @@ const handleUpdate = id => {
         .catch((error) => console.error("Error:", error));
 }
 
-
 const handleSave = () => {
     let groupData = {
         id: updateId,
