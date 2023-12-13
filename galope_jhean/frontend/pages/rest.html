@@ -3,52 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CARS</title>
-    <link rel="stylesheet" href="./mark.css" />
+    <title>Kpop</title>
+    <link rel="stylesheet" href="../rest.css" />
   </head>
   <body>
-    <h1>Car Details</h1>
-    <form id="car_form">
-      <label for="brand">Brand:</label>
-      <input type="text" id="brand" placeholder="Enter Car Brand" required />
-
-      <label for="model">Model:</label>
-      <input type="text" id="model" placeholder="Enter Car Model" required />
-
-      <label for="year">Year made:</label>
-      <input type="text" id="year" placeholder="Enter Year Made" required />
-
-      <label for="transmission">Transmission:</label>
-      <input
-        type="text"
-        id="transmission"
-        placeholder="Enter Transmission type"
-        required
-      />
-
-      <label for="fuel">Fuel Type:</label>
-      <input type="text" id="fuel" placeholder="Enter Fuel type" required />
-
-      <button type="button" onclick="createCar()">Create</button>
+    <h1>KPOP GROUP</h1>
+    <button class="add-group">+</button>
+    <form id="form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter Group Name" required />
+      <label for="members">Members:</label>
+      <input type="text" id="members" placeholder="Enter Members" required />
+      <label for="agency">Agency:</label>
+      <input type="text" id="agency" placeholder="Enter Agency" required />
+      <label for="debut_date">Debut Date:</label>
+      <input type="date" id="debut_date" required />
+      <label for="fandom">Fandom:</label>
+      <input type="text" id="fandom" placeholder="Enter Fandom Name" required />
+      <button class="submit-btn" onclick="insertGroup()">Submit</button>
+      <button type="button" class="save-btn" onclick="handleSave()">
+        Save
+      </button>
     </form>
-
-    <h2>Car Table</h2>
+    <h2>Kpop Groups</h2>
     <div class="table-container">
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Year made</th>
-            <th>Engine Type</th>
-            <th>Fuel Type</th>
+            <th>Group Name</th>
+            <th>Members</th>
+            <th>Agency</th>
+            <th>Debut Date</th>
+            <th>Fandom</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="car_table"></tbody>
+        <tbody id="group_tbl"></tbody>
       </table>
     </div>
-    <script src="mark.js"></script>
+    <script src="../rest.js"></script>
   </body>
 </html>
