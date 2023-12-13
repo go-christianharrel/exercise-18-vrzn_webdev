@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kpop</title>
+    <link rel="stylesheet" href="../rest.css" />
+  </head>
+  <body>
+    <h1>KPOP GROUP</h1>
+    <button class="add-group">+</button>
+    <form id="form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter Group Name" required />
+      <label for="members">Members:</label>
+      <input type="text" id="members" placeholder="Enter Members" required />
+      <label for="agency">Agency:</label>
+      <input type="text" id="agency" placeholder="Enter Agency" required />
+      <label for="debut_date">Debut Date:</label>
+      <input type="date" id="debut_date" required />
+      <label for="fandom">Fandom:</label>
+      <input type="text" id="fandom" placeholder="Enter Fandom Name" required />
+      <button class="submit-btn" onclick="insertGroup()">Submit</button>
+      <button type="button" class="save-btn" onclick="handleSave()">
+        Save
+      </button>
+    </form>
+    <h2>Kpop Groups</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Group Name</th>
+            <th>Members</th>
+            <th>Agency</th>
+            <th>Debut Date</th>
+            <th>Fandom</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="group_tbl"></tbody>
+      </table>
+    </div>
+    <script src="../rest.js"></script>
+  </body>
+</html>
