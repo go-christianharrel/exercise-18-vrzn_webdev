@@ -5,10 +5,10 @@ header("Access-Control-Allow-Headers: *");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vrzn_db";
+$servername = "127.0.0.1:3306";
+$username = "u583832022_api_vrzn";
+$password = "=OCqbuo~x3M";
+$dbname = "u583832022_db_vrzn";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -32,8 +32,11 @@ switch ($method) {
                 $genre = sanitizeInput($conn, $_POST['genre']);
                 $shelf = sanitizeInput($conn, $_POST['shelf']);
 
-                $stmt = $conn->prepare("INSERT INTO books (title, author, language, genre, shelf) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param("sssss", $title, $author, $language, $genre, $shelf);
+                $stmt = $conn->prepare("INSERT INTO 
+                    books (title, author, language, genre, shelf) 
+                        VALUES (?, ?, ?, ?, ?)");
+                $stmt->bind_param("sssss", $title, $author, 
+                    $language, $genre, $shelf);
 
                 if ($stmt->execute()) {
                     echo json_encode(["message" => "Book added!"]);
@@ -53,8 +56,10 @@ switch ($method) {
                 $genre = sanitizeInput($conn, $_POST['genre']);
                 $shelf = sanitizeInput($conn, $_POST['shelf']);
 
-                $stmt = $conn->prepare("UPDATE books SET title=?, author=?, language=?, genre=?, shelf=? WHERE id=?");
-                $stmt->bind_param("sssssi", $title, $author, $language, $genre, $shelf, $id);
+                $stmt = $conn->prepare("UPDATE books SET title=?, author=?, 
+                    language=?, genre=?, shelf=? WHERE id=?");
+                $stmt->bind_param("sssssi", $title, $author, $language, 
+                    $genre, $shelf, $id);
 
                 if ($stmt->execute()) {
                     echo json_encode(["message" => "Book updated!"]);
