@@ -1,0 +1,393 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: small;
+}
+
+.container-body {
+    background: url('images/finalbg.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+h1 {
+    font-size: medium;
+}
+
+.about {
+    font-size: x-small;
+}
+
+.profile-pic {
+   height: 130px;
+   width: 130px; 
+}
+
+.container-author-main {
+    display: flex;
+    justify-content: center;
+}
+
+.container-author {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 75px;
+    color: white;
+    width: 1000px;
+	background: rgba(0,0,0,.5);
+	padding:25px;
+    border:2px solid #4169E1;
+	border-radius: 8px;
+}
+
+.container-interests {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 75px;
+    color: white;
+}
+
+.list-interests {
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+div.interests-style {
+    font-size: xx-small;
+    margin-left: 20px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+	width: 400px;
+	background: rgba(0,0,0,.5);
+	padding:25px;
+	border:2px solid #4169E1;
+	border-radius: 8px;
+}
+
+.container-works {
+    margin-bottom: 75px;
+    color: white;
+}
+
+.list-works { 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+div.works-style {
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: x-small;
+}
+
+div.works-style a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0074cc;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    border:2px solid #4169E1;
+    transition: background-color 0.3s;
+}
+
+div.works-style a:hover {
+    background-color: #0056a4;
+}
+
+.container-testimonials {
+    color:white;
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.guide-testimonials {
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+div.testimonials-style {
+    font-size: x-small;
+    color: black;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+	width: 300px;
+	background-color: white;
+	padding:25px;
+	border:2px solid #4169E1;
+	border-radius: 8px;
+}
+
+.container-gallery {
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.guide-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image-gallery {
+    width: 250px;
+    height: 150px;
+}
+
+.container-goals {
+    color: white;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.guide-goals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+div.goals-style {
+    font-size: x-small;
+    text-align: center;
+    margin:0 auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+	width: 200px;
+	background: rgba(0,0,0,.5);
+	padding:25px;
+	border:2px solid #4169E1;
+	border-radius: 8px;
+}
+
+.comment-style {  
+    font-size: x-small;
+    margin:0 auto;
+    margin-bottom: 20px;	
+}
+
+.guide-comment {
+    border: 2px solid #4169E1;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }
+  
+.comment-style {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+  
+.comment-name {
+    font-weight: bold;
+}
+  
+.comments {
+    margin: 10px 0;
+}
+
+#sort_button {
+    background-color: #0074cc;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid #4169E1;
+    margin-top: 10px;
+}
+
+#sort_button:hover {
+    background-color: #0056a4;
+}
+
+.comment-input-style {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin:0 auto;
+	width: 200px;
+	background-color: #fff;
+	padding:25px;
+	border:2px solid #4169E1;
+	border-radius: 8px;
+}
+
+.comment-input-style input,
+.comment-input-style textarea,
+.comment-input-style button {
+    margin: 15px;
+}
+
+#input_name {
+    width: 125px;
+}
+
+#input_comment {
+    width: 200px;
+    height: 100px;
+}
+
+#btn {
+    background-color: #4169E1; 
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+#btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+@media (min-width: 372px) and (max-width: 700px) {
+    h1 {
+        font-size: x-large;
+    }
+
+    h2 {
+        font-size: large;
+    }
+
+    .about {
+        font-size: medium;
+    }
+
+    .profile-pic {
+        height: 175px;
+        width: 175px; 
+     }
+
+    div.interests-style {
+        font-size: medium;
+    } 
+
+    div.works-style {
+        font-size: medium;
+    }
+
+    div.testimonials-style {
+        font-size: medium;
+    } 
+
+    .image-gallery {
+        width: 300px;
+        height: 200px;
+    }
+
+    div.goals-style {
+        font-size: medium;
+    }
+
+    .comment-style {
+        font-size: medium;
+    }
+
+    .comment-input-style {
+        width: 300px;
+    }
+
+    #input_name {
+        width: 300px;
+    }
+    
+    #input_comment {
+        width: 300px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 701px) {
+    h1 {
+        font-size: xx-large;
+    }
+
+    h2 {
+        font-size: x-large;
+    }
+
+    .about {
+        font-size: large;
+    }
+
+    .profile-pic {
+        height: 200px;
+        width: 200px; 
+     }
+
+    div.interests-style {
+        font-size: medium;
+    } 
+
+    div.works-style {
+        font-size: medium;
+    }
+
+    div.testimonials-style {
+        font-size: medium;
+    } 
+
+    .image-gallery {
+        width: 550px;
+        height: 350px;
+    }
+
+    div.goals-style {
+        font-size: medium;
+    }
+
+    .comment-style {
+        font-size: medium;
+    }
+
+    .comment-input-style {
+        width: 500px;
+
+    }
+
+    #input_name {
+        width: 400px;
+    }
+    
+    #input_comment {
+        width: 400px;
+        height: 200px;
+    }
+}
