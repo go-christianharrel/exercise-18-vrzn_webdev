@@ -167,10 +167,3 @@ function deleteGroup(id) {
 document.addEventListener("DOMContentLoaded", function () {
   getGroups();
 });
-
-
-
-
-
-
-
