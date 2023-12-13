@@ -1,24 +1,24 @@
 <?php
-header("Access-Control-Allow-Origin:*");
-header("Access-Control-Allow-Method:*");
-header("Access-Control-Allow-Headers:*");
+    header("Access-Control-Allow-Origin:*");
+    header("Access-Control-Allow-Method:*");
+    header("Access-Control-Allow-Headers:*");
 
-$method = $_SERVER['REQUEST_METHOD'];
+    $method = $_SERVER['REQUEST_METHOD'];
 
-$servername = "127.0.0.1:3306";
-$username = "u583832022_api_vrzn";
-$password = "=OCqbuo~x3M";
-$dbname = "u583832022_db_vrzn";
- 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $servername = "127.0.0.1:3306";
+    $username = "u583832022_api_vrzn";
+    $password = "=OCqbuo~x3M";
+    $dbname = "u583832022_db_vrzn";
+    
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-function sanitizeInput($conn, $input) {
-    return $conn->real_escape_string($input);
-}
+    function sanitizeInput($conn, $input) {
+        return $conn->real_escape_string($input);
+    }
 
 switch ($method) {
     case 'POST':
@@ -101,5 +101,5 @@ switch ($method) {
         break;
 }
 
-$conn->close();
+    $conn->close();
 ?>
