@@ -76,8 +76,9 @@ button:disabled {
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(36, 33, 33, 0.3);
   color: white;
+  font-weight: 700;
   outline: 1px;
 }
 
@@ -89,7 +90,7 @@ td {
 }
 
 th {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(36, 33, 33, 0.3);
   color: white;
   text-align: center;
 }
