@@ -11,9 +11,9 @@
     <div class="container-author-main">
       <div class="container-author">
         <img 
-        class="profile-pic" 
-        src="./images/andro_circle.png" 
-        alt="Andronicus Image"/>
+          class="profile-pic" 
+          src="./images/andro_circle.png" 
+          alt="Andronicus Image"/>
         <h1>Dimasacat Andronicus</h1>
           <p class="about">
             A 3rd Year College of Bachelor of Science in Information 
@@ -78,24 +78,18 @@
       <ol class="list-works">
         <div class="works-style">
           <li><a href="./database_API/index.html" target="blank">
-            Database API List</a></li>
+            Game Characters Rest API</a></li>
         </div>
         <div class="works-style">
-          <li>
-            <a
-              href="#"
-              >Photo Editor Design in Figma</a
-            >
-          </li>
+          <li><a href="#">
+            Photo Editor Design in Figma</a></li>
         </div>
         <div class="works-style">
           <li><a href="./countries/country_index.html" target="blank">
             Countries of the World</a></li>
         </div>
         <div class="works-style">
-          <li>
-            <a href="#">Google Site Portfolio</a>
-          </li>
+          <li><a href="#">Google Site Portfolio</a></li>
         </div>
         <div class="works-style">
           <li><a href="#">If Else in Python</a></li>
@@ -167,70 +161,70 @@
           alt="Dialga Image from Pokemon Anime"/>
       </div>
     </div>
+    <section class="container-goals">
+      <h2>My Goals</h2>
+      <div class="guide-goals">
+        <div class="goals-style">
+          <p>Obtain a Professional Certification</p>
+          <p>
+            IT certifications, like CompTIA A+, Cisco CCNA, or AWS Certified
+            Solutions Architect, can enhance one's career prospects and
+            knowledge.
+          </p>
+        </div>
+        <div class="goals-style">
+          <p>Increase Technical Proficiency</p>
+          <p>
+            Enhancing technical skills and expertise in areas such as cloud
+            computing, cybersecurity, or data analytics is a common goal.
+          </p>
+        </div>
+        <div class="goals-style">
+          <p>Stay Current with Technology Trends</p>
+          <p>
+            Staying updated with the latest industry trends, such as 
+            artificial intelligence, blockchain, or IoT, is essential 
+            to remain competitive in the IT field.
+          </p>
+        </div>
+        <div class="goals-style">
+          <p>Take Masteral for Artificial Intelligence</p>
+          <p>
+            This educational journey offers a unique opportunity to 
+            contribute to cutting-edge research, gain hands-on 
+            experience, and position myself for impactful roles.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="container-comment">
+      <div class="guide-comment">
+        <h2>Comment Section</h2>
+        <button 
+          id="sort_button" 
+          onclick="sortOrder()">
+          Sort Order
+        </button>
+      </div>
+      <div class="comment-input-style">
+        <input
+          id="input_name"
+          type="text"
+          placeholder="Input your name"
+          oninput="validate()"/>
+        <textarea
+          id="input_comment"
+          cols="30"
+          rows="4"
+          placeholder="Enter your comment..."
+          oninput="validate()"></textarea>
+        <button 
+          id="btn" 
+          type="button" 
+          disabled="true" 
+          onclick="addComment()">Comment</button>
+      </div>
+    </div>
+    <script src="./dimasacat_andronicus.js"></script>
   </body>
-  <section class="container-goals">
-    <h2>My Goals</h2>
-    <div class="guide-goals">
-      <div class="goals-style">
-        <p>Obtain a Professional Certification</p>
-        <p>
-          IT certifications, like CompTIA A+, Cisco CCNA, or AWS Certified
-          Solutions Architect, can enhance one's career prospects and
-          knowledge.
-        </p>
-      </div>
-      <div class="goals-style">
-        <p>Increase Technical Proficiency</p>
-        <p>
-          Enhancing technical skills and expertise in areas such as cloud
-          computing, cybersecurity, or data analytics is a common goal.
-        </p>
-      </div>
-      <div class="goals-style">
-        <p>Stay Current with Technology Trends</p>
-        <p>
-          Staying updated with the latest industry trends, such as 
-          artificial intelligence, blockchain, or IoT, is essential 
-          to remain competitive in the IT field.
-        </p>
-      </div>
-      <div class="goals-style">
-        <p>Take Masteral for Artificial Intelligence</p>
-        <p>
-          This educational journey offers a unique opportunity to 
-          contribute to cutting-edge research, gain hands-on 
-          experience, and position myself for impactful roles.
-        </p>
-      </div>
-    </div>
-  </section>
-  <div class="container-comment">
-    <div class="guide-comment">
-      <h2>Comment Section</h2>
-      <button 
-        id="sort_button" 
-        onclick="sortOrder()">
-        Sort Order
-      </button>
-    </div>
-    <div class="comment-input-style">
-      <input
-        id="input_name"
-        type="text"
-        placeholder="Input your name"
-        oninput="validate()"/>
-      <textarea
-        id="input_comment"
-        cols="30"
-        rows="4"
-        placeholder="Enter your comment..."
-        oninput="validate()"></textarea>
-      <button 
-        id="btn" 
-        type="button" 
-        disabled="true" 
-        onclick="addComment()">Comment</button>
-    </div>
-  </div>
-  <script src="./dimasacat_andronicus.js"></script>
 </html>                                                                          
