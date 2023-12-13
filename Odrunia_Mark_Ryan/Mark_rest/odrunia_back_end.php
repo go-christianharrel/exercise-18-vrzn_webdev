@@ -55,7 +55,7 @@ if ($method === 'POST') {
     } elseif ($action === 'delete') {
         $carId = sanitizeInput($conn, $_POST['carId']);
 
-        $sql = "DELETE FROM Car WHERE ID='$carId'";
+        $sql = "DELETE FROM car WHERE ID='$carId'";
         $result = $conn->query($sql);
 
         if ($result === TRUE) {
@@ -69,7 +69,7 @@ if ($method === 'POST') {
         echo json_encode(array("message" => "Invalid action parameter"));
     }
 } elseif ($method === 'GET') {
-    $result = $conn->query("SELECT * FROM Car");
+    $result = $conn->query("SELECT * FROM car");
     $cars = array();
     while ($row = $result->fetch_assoc()) {
         $cars[] = $row;
