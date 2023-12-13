@@ -1,0 +1,255 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d3f9fd;
+}
+  
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+}
+  
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+  
+#character_form {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%;
+}
+
+#character_form h3 {
+  text-align: center;
+  font-size: 15px;
+}
+  
+#add_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#add_form input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+#add_form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+#add_form select option {
+  padding: 5px;
+  text-align: center;
+}
+
+#add_form select:focus {
+  outline: none;
+  border-color: #34ccab; 
+}
+
+#add_form select:hover {
+  border-color: #228872;
+}
+
+#add_form button {
+  background-color: #34ccab;
+  color: #fff;
+  width: 120px;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#add_form button:hover {
+  background-color: #228872;
+}
+  
+#add_form button,
+#add_form button + button {
+  margin-top: 10px;
+}
+
+.table-container {
+  width: 100%;
+  margin-top: 50px;
+  overflow-x:auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 7px;
+  text-align: center;
+}
+
+th {
+  background-color: #d5d8d8;
+}
+  
+#update_button {
+  background-color: #47d34c;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#update_button:hover {
+  background-color: #2c862f;
+}
+
+#delete_button {
+  background-color: #d44e45;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  cursor: pointer;
+}
+  
+#delete_button:hover {
+  background-color: #702924;
+}
+
+#update_character_form {
+  display: none;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin-bottom: 50px;
+}
+  
+#update_character_form h3 {
+  text-align: center;
+  font-size: 15px;
+}
+
+#update_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#update_form input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+#update_form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+#update_form select option {
+  padding: 5px;
+  text-align: center;
+}
+
+#update_form select:focus {
+  outline: none;
+  border-color: #34ccab; 
+}
+
+#update_form select:hover {
+  border-color: #228872;
+}
+
+#update_form button {
+  background-color: #34ccab;
+  color: #fff;
+  width: 200px;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#update_form button:hover {
+  background-color: #228872;
+}
+  
+#update_form button,
+#update_form button + button {
+  margin-top: 10px;
+}
+
+@media (min-width: 1024px) {
+  h2 {
+    font-size: xx-large;
+  }
+
+  #character_form {
+    padding: 15px;
+    width: 80%;
+  }
+  
+  #character_form h3 {
+    font-size: x-large;
+  }
+  
+  #add_form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%;
+  }
+
+  #add_form button {
+    width: 200px;
+  }
+  
+  #update_character_form {
+    padding: 15px;
+    width: 80%;
+  }
+    
+  #_update_character_form h3 {
+    font-size: x-large;
+  }
+  
+  #update_form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%;
+  }
+
+  #update_form button {
+    width: 200px;
+    }
+}
