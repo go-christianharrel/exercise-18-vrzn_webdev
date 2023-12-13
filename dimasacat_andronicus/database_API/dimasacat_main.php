@@ -174,4 +174,5 @@
         default:
             echo 'Invalid action';
             break;
-}
+    }
+?>
