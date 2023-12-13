@@ -1,3 +1,5 @@
+const address = "https://projectvrzn.online/api/dimasacat_main.php";
+
 function addCharacter() {
   const nameInput = document.querySelector("#name");
   const genderInput = document.querySelector("#gender");
@@ -26,7 +28,7 @@ function addCharacter() {
       encodeURIComponent(characterData[key]))
     .join("&");
 
-  fetch("./phpfiles/main_process.php", {
+  fetch(address, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -46,17 +48,34 @@ function addCharacter() {
     .catch((error) => console.error("Error:", error));
 }
 
-function displayCharacters() {
-  fetch("./phpfiles/main_process.php?action=GET")
-    .then((response) => response.text())
-    .then((responseText) => {
-      document.querySelector("#character_list").innerHTML =
-        "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Skill</th>" +
-        "<th>Game</th><th>Genre</th><th>Modify</th>" +
-        "<th>Remove</th></tr>" +
-        responseText;
-    })
-    .catch((error) => console.error("Error:", error));
+async function displayCharacters() {
+  try {
+    const characterData = {
+      action: "GET",
+    };
+
+    const urlEncodedData = Object.keys(characterData)
+      .map((key) => encodeURIComponent(key) + "=" + 
+        encodeURIComponent(characterData[key]))
+      .join("&");
+
+    const response = await fetch(address, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: urlEncodedData,
+    });
+
+    const responseText = await response.text();
+    document.querySelector("#character_list").innerHTML =
+      "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Skill</th>" +
+      "<th>Game</th><th>Genre</th><th>Modify</th>" +
+      "<th>Remove</th></tr>" +
+      responseText;
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 displayCharacters();
@@ -109,7 +128,7 @@ function modifyCharacter() {
       encodeURIComponent(characterData[key]))
     .join("&");
 
-  fetch("./phpfiles/main_process.php", {
+  fetch(address, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -144,7 +163,7 @@ function removeCharacter(characterId) {
         + encodeURIComponent(deleteData[key]))
       .join("&");
 
-    fetch("./phpfiles/main_process.php", {
+    fetch(address, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
