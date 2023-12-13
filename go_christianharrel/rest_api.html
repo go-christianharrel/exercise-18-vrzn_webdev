@@ -52,8 +52,9 @@
           <option value="CurrentlyReading">Currently Reading</option>
           <option value="Read">Read</option>
         </select>
+        <input type="hidden" id="book_id" />
 
-        <button type="submit" id="submit_button">Submit</button>
+        <button type="submit" id="submit_button" disabled>Submit</button>
       </form>
     </div>
 
@@ -75,5 +76,7 @@
         <tbody id="table_body"></tbody>
       </table>
     </div>
+
+    <script src="rest_api.js"></script>
   </body>
 </html>
