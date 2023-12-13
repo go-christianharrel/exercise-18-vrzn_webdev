@@ -40,7 +40,6 @@ function insertGroup() {
             console.error("Error creating album:", error.message);
         });
         
-
     form.reset();
     addBtn.click();
 }
@@ -48,9 +47,7 @@ function insertGroup() {
 function getGroups() {
   fetch(api)
     .then((response) => response.json())
-    .then((data) => {
-      displayGroup(data);
-    })
+    .then((data) => displayGroup(data))
     .catch((error) => console.error("Error:", error));
 }
 
@@ -120,7 +117,6 @@ const handleUpdate = id => {
 
 
 const handleSave = () => {
-
     let groupData = {
         id: updateId,
         name: document.querySelector("#name").value,
@@ -143,7 +139,6 @@ const handleSave = () => {
             console.error("Error creating album:", error.message);
         });
 
-
     form.reset();
     submit.style.display = "block";
     save.style.display = "none";
@@ -151,7 +146,6 @@ const handleSave = () => {
 }
 
 function deleteGroup(id) {
-
   let groupData = {
       id: id,
       action: "DELETE",
