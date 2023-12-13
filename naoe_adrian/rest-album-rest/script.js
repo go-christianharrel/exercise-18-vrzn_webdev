@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           createAlbum();
         }
-      } else {
-        console.log("Form is not valid. Please fill in all required fields.");
       }
     });
 
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelector("#album_name")
       .addEventListener("input", validateForm);
     document
-      .querySelector("#main_artist")
+      .querySelector("#artist")
       .addEventListener("input", validateForm);
     document
       .querySelector("#num_tracks")
@@ -33,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelector("#language")
       .addEventListener("change", validateForm);
-    document.querySelector("#genre").addEventListener("change", validateForm);
+    document.querySelector("#genre")
+      .addEventListener("change", validateForm);
   } else {
     console.error("Error: Album form not found.");
   }
@@ -45,14 +44,14 @@ function validateForm() {
 
   const isChanged = [
     "album_name",
-    "main_artist",
+    "artist",
     "num_tracks",
     "language",
     "genre",
   ].some((id) => getValue(id) !== getDefault(id));
 
   const isValid =
-    ["album_name", "main_artist", "num_tracks", "language", "genre"].every(
+    ["album_name", "artist", "num_tracks", "language", "genre"].every(
       (id) => getValue(id).trim()
     ) && isChanged;
 
@@ -62,90 +61,63 @@ function validateForm() {
 
 function createAlbum() {
   let albumData = {
-    albumName: document.querySelector("#album_name").value,
-    mainArtist: document.querySelector("#main_artist").value,
+    album_name: document.querySelector("#album_name").value,
+    artist: document.querySelector("#artist").value,
     language: document.querySelector("#language").value,
-    numTracks: document.querySelector("#num_tracks").value,
+    track_number: document.querySelector("#num_tracks").value,
     genre: document.querySelector("#genre").value,
     action: "POST",
   };
 
-  let formData = Object.keys(albumData)
-    .map((key) => `${key}=${albumData[key]}`)
-    .join("&");
+  let formData = new FormData();
+  for (const key in albumData) {
+    formData.append(key, albumData[key]);
+  }
 
   fetch(apiUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
     body: formData,
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      let outputElement = document.querySelector("#output");
-      if (outputElement) {
-        outputElement.innerHTML = data.message;
-      }
-
-      readAlbums();
-      resetForm();
+      handleResponse(data);
     })
     .catch((error) => {
       console.error("Error creating album:", error.message);
-
-      let outputElement = document.querySelector("#output");
-      if (outputElement) {
-        outputElement.innerHTML = "Error creating album. Please try again.";
-      }
+      handleResponse({ message: "Error creating album. Please try again." });
     });
 }
 
 function performUpdate() {
   let albumData = {
     albumId: document.querySelector("#album_id").value,
-    albumName: document.querySelector("#album_name").value,
-    mainArtist: document.querySelector("#main_artist").value,
+    album_name: document.querySelector("#album_name").value,
+    artist: document.querySelector("#artist").value,
     language: document.querySelector("#language").value,
-    numTracks: document.querySelector("#num_tracks").value,
+    track_number: document.querySelector("#num_tracks").value,
     genre: document.querySelector("#genre").value,
     action: "PATCH",
   };
 
-  let formData = Object.keys(albumData)
-    .map((key) => `${key}=${albumData[key]}`)
-    .join("&");
+  let formData = new FormData();
+  for (const key in albumData) {
+    formData.append(key, albumData[key]);
+  }
 
   fetch(apiUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
     body: formData,
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      let outputElement = document.querySelector("#output");
-      if (outputElement) {
-        outputElement.innerHTML = data.message;
-      }
-      resetForm();
-      readAlbums();
+      handleResponse(data);
     })
     .catch((error) => {
       console.error("Error updating album:", error.message);
+      handleResponse({ message: "Error updating album. Please try again." });
     });
 }
+
 
 function deleteAlbum(albumId) {
   let albumData = {
@@ -153,34 +125,35 @@ function deleteAlbum(albumId) {
     action: "DELETE",
   };
 
-  let formData = Object.keys(albumData)
-    .map((key) => `${key}=${albumData[key]}`)
-    .join("&");
+  let formData = new FormData();
+  for (const key in albumData) {
+    formData.append(key, albumData[key]);
+  }
 
   fetch(apiUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
     body: formData,
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      let outputElement = document.querySelector("#output");
-      if (outputElement) {
-        outputElement.innerHTML = data.message;
-      }
-      readAlbums();
+      handleResponse(data);
     })
     .catch((error) => {
       console.error("Error deleting album:", error.message);
+      handleResponse({ message: "Error deleting album. Please try again." });
     });
 }
+
+function handleResponse(data) {
+  let outputElement = document.querySelector("#output");
+  if (outputElement) {
+    outputElement.innerHTML = data.message;
+  }
+
+  readAlbums();
+  resetForm();
+}
+
 
 function readAlbums() {
   fetch(apiUrl)
@@ -205,12 +178,12 @@ function readAlbums() {
           let cell5 = row.insertCell(5);
           let cell6 = row.insertCell(6);
 
-          cell0.innerHTML = album.id;
-          cell1.innerHTML = album.albumName.toUpperCase();
-          cell2.innerHTML = album.mainArtist.toUpperCase();
-          cell3.innerHTML = album.language;
-          cell4.innerHTML = album.numTracks;
-          cell5.innerHTML = album.genre;
+          cell0.innerHTML = album.id || ''; 
+          cell1.innerHTML = (album.album_name || '').toUpperCase();
+          cell2.innerHTML = (album.artist || '').toUpperCase();
+          cell3.innerHTML = album.language || '';
+          cell4.innerHTML = album.track_number || '';
+          cell5.innerHTML = album.genre || '';
 
           let updateButton = document.createElement("button");
           updateButton.textContent = "Update";
@@ -239,6 +212,7 @@ function readAlbums() {
     });
 }
 
+
 function updateAlbum(album) {
   document
     .querySelector("#language")
@@ -247,10 +221,10 @@ function updateAlbum(album) {
     .removeEventListener("change", validateForm);
 
   document.querySelector("#album_id").value = album.id;
-  document.querySelector("#album_name").value = album.albumName;
-  document.querySelector("#main_artist").value = album.mainArtist;
+  document.querySelector("#album_name").value = album.album_name;
+  document.querySelector("#artist").value = album.artist;
   document.querySelector("#language").value = album.language;
-  document.querySelector("#num_tracks").value = album.numTracks;
+  document.querySelector("#num_tracks").value = album.track_number;
   document.querySelector("#genre").value = album.genre;
 
   let createButton = document.querySelector("#album_form button");

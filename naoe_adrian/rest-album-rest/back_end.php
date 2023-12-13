@@ -26,54 +26,53 @@ switch ($method) {
 
         switch ($action) {
             case 'POST':
-                $albumName = sanitizeInput($conn, $_POST['albumName']);
-                $mainArtist = sanitizeInput($conn, $_POST['mainArtist']);
+                $album_name = sanitizeInput($conn, $_POST['album_name']);
+                $artist = sanitizeInput($conn, $_POST['artist']);
                 $language = sanitizeInput($conn, $_POST['language']);
-                $numTracks = sanitizeInput($conn, $_POST['numTracks']);
+                $track_number = sanitizeInput($conn, $_POST['track_number']);
                 $genre = sanitizeInput($conn, $_POST['genre']);
 
-                $sql = "INSERT INTO albums 
-                        (albumName, mainArtist, language, numTracks, genre) 
+                $sql = "INSERT INTO album 
+                        (album_name, artist, language, track_number, genre) 
                         VALUES 
-                        ('$albumName', '$mainArtist', '$language', 
-                        '$numTracks', '$genre')";
+                        ('$album_name', '$artist', '$language', 
+                        '$track_number', '$genre')";
                 $conn->query($sql);
 
                 echo 
-                json_encode(array("message" => "Album created successfully"));
+                json_encode(array("message" => "Created successfully"));
                 break;
 
             case 'PATCH':
                 $albumId = sanitizeInput($conn, $_POST['albumId']);
-                $albumName = sanitizeInput($conn, $_POST['albumName']);
-                $mainArtist = sanitizeInput($conn, $_POST['mainArtist']);
+                $album_name = sanitizeInput($conn, $_POST['album_name']);
+                $artist = sanitizeInput($conn, $_POST['artist']);
                 $language = sanitizeInput($conn, $_POST['language']);
-                $numTracks = sanitizeInput($conn, $_POST['numTracks']);
+                $track_number = sanitizeInput($conn, $_POST['track_number']);
                 $genre = sanitizeInput($conn, $_POST['genre']);
 
-                $sql = "UPDATE albums 
-                        SET albumName='$albumName', 
-                            mainArtist='$mainArtist', 
+                $sql = "UPDATE album 
+                        SET album_name='$album_name', 
+                            artist='$artist', 
                             language='$language', 
-                            numTracks='$numTracks', 
+                            track_number='$track_number', 
                             genre='$genre'
                         WHERE id='$albumId'";
                 $conn->query($sql);
 
-                echo 
-                json_encode(array("message" => "Album updated"));
+                echo json_encode(array("message" => "Album updated"));
                 break;
 
             case 'DELETE':
                 $albumId = sanitizeInput($conn, $_POST['albumId']);
 
-                $sql = "DELETE FROM albums WHERE id='$albumId'";
+                $sql = "DELETE FROM album WHERE id='$albumId'";
 
                 if ($conn->query($sql) === TRUE) {
                     echo 
                     json_encode(array("message" => "Album deleted"));
                 } else {
-                    http_response_code(500); 
+                    http_response_code(500);
                     echo 
                     json_encode(array("message" => "Error" . $conn->error));
                 }
@@ -88,7 +87,7 @@ switch ($method) {
         break;
 
     case 'GET':
-        $result = $conn->query("SELECT * FROM albums");
+        $result = $conn->query("SELECT * FROM album");
         $albums = array();
         while ($row = $result->fetch_assoc()) {
             $albums[] = $row;
