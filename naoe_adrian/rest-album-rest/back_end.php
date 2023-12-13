@@ -85,7 +85,6 @@ switch ($method) {
                 json_encode(array("message" => "Invalid action parameter"));
                 break;
         }
-
         break;
 
     case 'GET':

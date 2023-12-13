@@ -46,7 +46,7 @@ function validateForm() {
   let submitButton = document.querySelector("#album_form button");
 
   let isChanged =
-    albumId || // If albumId is present, it's an PATCH
+    albumId ||
     document.querySelector("#album_name").defaultValue !== albumName ||
     document.querySelector("#main_artist").defaultValue !== mainArtist ||
     document.querySelector("#num_tracks").defaultValue !== numTracks ||
@@ -248,7 +248,8 @@ function updateAlbum(album) {
   document
     .querySelector("#language")
     .removeEventListener("change", validateForm);
-  document.querySelector("#genre").removeEventListener("change", validateForm);
+  document.querySelector("#genre")
+    .removeEventListener("change", validateForm);
 
   document.querySelector("#album_id").value = album.id;
   document.querySelector("#album_name").value = album.albumName;
@@ -263,8 +264,10 @@ function updateAlbum(album) {
     performUpdate();
   };
 
-  document.querySelector("#language").addEventListener("change", validateForm);
-  document.querySelector("#genre").addEventListener("change", validateForm);
+  document.querySelector("#language")
+    .addEventListener("change", validateForm);
+  document.querySelector("#genre")
+    .addEventListener("change", validateForm);
 }
 
 function resetForm() {
