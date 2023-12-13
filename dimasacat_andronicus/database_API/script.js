@@ -71,8 +71,7 @@ async function displayCharacters() {
     document.querySelector("#character_list").innerHTML =
       "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Skill</th>" +
       "<th>Game</th><th>Genre</th><th>Modify</th>" +
-      "<th>Remove</th></tr>" +
-      responseText;
+      "<th>Remove</th></tr>" + responseText;
   } catch (error) {
     console.error("Error:", error);
   }
@@ -149,7 +148,6 @@ function modifyCharacter() {
     })
     .catch((error) => console.error("Error:", error));
 }
-
 
 function removeCharacter(characterId) {
   if (confirm("Are you sure you want to delete this character?")) {
