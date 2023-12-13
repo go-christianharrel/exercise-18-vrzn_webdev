@@ -1,3 +1,5 @@
+const api = "https://projectvrzn.online/api/odrunia_back_end.php";
+
 function createCar() {
   const brand = document.querySelector("#brand").value;
   const model = document.querySelector("#model").value;
@@ -13,7 +15,6 @@ function createCar() {
   formData.append("transmission", transmission);
   formData.append("fuel", fuel);
 
-  const api = "https://projectvrzn.online/api/odrunia_back_end.php";
   fetch(api, {
     method: "POST",
     headers: {
