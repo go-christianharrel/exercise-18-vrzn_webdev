@@ -31,7 +31,7 @@ if ($method === 'POST') {
         $fuelType = sanitizeInput($conn, $_POST['fuel']);
 
         $sql = "INSERT INTO car 
-        (Brand, Model, YearMade, TransmissionType, FuelType) 
+        (brand, model, year_made, transmission_type, fuel_type) 
         VALUES 
         ('$brand', '$model', '$yearMade', '$transmission', '$fuelType')";
         $conn->query($sql);
@@ -45,9 +45,9 @@ if ($method === 'POST') {
         $transmission = sanitizeInput($conn, $_POST['transmission']);
         $fuelType = sanitizeInput($conn, $_POST['fuel']);
 
-        $sql = "UPDATE Car 
-        SET Brand='$brand', Model='$model', YearMade='$yearMade', 
-        TransmissionType='$transmission', FuelType='$fuelType' 
+        $sql = "UPDATE car 
+        SET brand='$brand', model='$model', year_made='$yearMade', 
+        transmission_type='$transmission', fuel_type='$fuelType' 
         WHERE ID='$carId'";
         $conn->query($sql);
 
