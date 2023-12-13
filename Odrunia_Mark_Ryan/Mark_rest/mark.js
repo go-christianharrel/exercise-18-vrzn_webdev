@@ -13,8 +13,7 @@ function createCar() {
   formData.append("transmission", transmission);
   formData.append("fuel", fuel);
 
-  const api =
-    "https://exercise.projectvrzn.online/Odrunia_Mark_Ryan/odrunia_back_end.php";
+  const api = "https://projectvrzn.online/api/odrunia_back_end.php";
   fetch(api, {
     method: "POST",
     headers: {
