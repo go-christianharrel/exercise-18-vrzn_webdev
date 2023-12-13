@@ -5,11 +5,11 @@ header("Access-Control-Allow-Headers:*");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_vrzn";
-
+$servername = "127.0.0.1:3306";
+$username = "u583832022_api_vrzn";
+$password = "=OCqbuo~x3M";
+$dbname = "u583832022_db_vrzn";
+ 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {

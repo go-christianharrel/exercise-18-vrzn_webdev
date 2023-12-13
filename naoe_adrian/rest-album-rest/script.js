@@ -1,3 +1,6 @@
+const apiUrl =
+  "https://projectvrzn.online/api/naoe_back_end.php";
+  
 document.addEventListener("DOMContentLoaded", () => {
   readAlbums();
 
@@ -37,31 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function validateForm() {
-  let albumId = document.querySelector("#album_id").value;
-  let albumName = document.querySelector("#album_name").value;
-  let mainArtist = document.querySelector("#main_artist").value;
-  let numTracks = document.querySelector("#num_tracks").value;
-  let language = document.querySelector("#language").value;
-  let genre = document.querySelector("#genre").value;
-  let submitButton = document.querySelector("#album_form button");
+  const getValue = (id) => document.querySelector(`#${id}`).value;
+  const getDefault = (id) => document.querySelector(`#${id}`).defaultValue;
 
-  let isChanged =
-    albumId ||
-    document.querySelector("#album_name").defaultValue !== albumName ||
-    document.querySelector("#main_artist").defaultValue !== mainArtist ||
-    document.querySelector("#num_tracks").defaultValue !== numTracks ||
-    document.querySelector("#language").defaultValue !== language ||
-    document.querySelector("#genre").defaultValue !== genre;
+  const isChanged = [
+    "album_name",
+    "main_artist",
+    "num_tracks",
+    "language",
+    "genre",
+  ].some((id) => getValue(id) !== getDefault(id));
 
-  let isValid =
-    albumName.trim() &&
-    mainArtist.trim() &&
-    numTracks.trim() &&
-    language &&
-    genre &&
-    isChanged;
+  const isValid =
+    ["album_name", "main_artist", "num_tracks", "language", "genre"].every(
+      (id) => getValue(id).trim()
+    ) && isChanged;
 
-  submitButton.disabled = !isValid;
+  document.querySelector("#album_form button").disabled = !isValid;
   return isValid;
 }
 
@@ -79,7 +74,7 @@ function createAlbum() {
     .map((key) => `${key}=${albumData[key]}`)
     .join("&");
 
-  fetch("https://exercise.projectvrzn.online/naoe_adrian/naoe_back_end.php", {
+  fetch(apiUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -126,7 +121,7 @@ function performUpdate() {
     .map((key) => `${key}=${albumData[key]}`)
     .join("&");
 
-  fetch("https://exercise.projectvrzn.online/naoe_adrian/naoe_back_end.php", {
+  fetch(apiUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -162,7 +157,7 @@ function deleteAlbum(albumId) {
     .map((key) => `${key}=${albumData[key]}`)
     .join("&");
 
-  fetch("https://exercise.projectvrzn.online/naoe_adrian/naoe_back_end.php", {
+  fetch(apiUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -188,7 +183,7 @@ function deleteAlbum(albumId) {
 }
 
 function readAlbums() {
-  fetch("https://exercise.projectvrzn.online/naoe_adrian/naoe_back_end.php")
+  fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -259,7 +254,7 @@ function updateAlbum(album) {
   document.querySelector("#genre").value = album.genre;
 
   let createButton = document.querySelector("#album_form button");
-  createButton.textContent = "PATCH";
+  createButton.textContent = "UPDATE";
   createButton.onclick = function () {
     performUpdate();
   };
