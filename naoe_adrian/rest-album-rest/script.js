@@ -1,5 +1,4 @@
-const apiUrl =
-  "https://projectvrzn.online/api/naoe_back_end.php";
+const apiUrl = "https://projectvrzn.online/api/naoe_back_end.php";
   
 document.addEventListener("DOMContentLoaded", () => {
   readAlbums();
