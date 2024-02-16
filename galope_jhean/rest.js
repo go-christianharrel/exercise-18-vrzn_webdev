@@ -3,9 +3,8 @@ const form = document.querySelector("#form");
 const update = document.querySelector(".update-button");
 const save = document.querySelector(".save-btn");
 const submit = document.querySelector(".submit-btn");
-let updateId = 0;
-
-const api = "https://projectvrzn.online/api/kpop.php";
+const api = "https://jhean-kpop-default-rtdb.asia-southeast1.firebasedatabase.app/kpop-list";
+let groupToUpdate = 0;
 
 addBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -25,15 +24,14 @@ function insertGroup() {
         agency: document.querySelector("#agency").value,
         debut_date: document.querySelector("#debut_date").value,
         fandom: document.querySelector("#fandom").value,
-        action: "POST",
     };
 
-    fetch(api, {
+    fetch(`${api}.json`, {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams(groupData).toString(),
+        body: JSON.stringify(groupData),
     })
         .then(() => getGroups())
         .catch((error) => {
@@ -45,15 +43,22 @@ function insertGroup() {
 }
 
 function getGroups() {
-  fetch(api)
+  fetch(`${api}.json`)
     .then((response) => response.json())
-    .then((data) => displayGroup(data))
+    .then((data) => {
+      const tableBody = document.querySelector("#group_tbl");
+      tableBody.innerHTML = "";
+
+      for(const group in data){
+        displayGroup(data[group], group);
+      }
+
+    })
     .catch((error) => console.error("Error:", error));
 }
 
-function displayGroup(groups) {
+function displayGroup(group, groupid) {
   const tableBody = document.querySelector("#group_tbl");
-  tableBody.innerHTML = "";
 
   function createCell(content) {
     const cell = document.createElement("td");
@@ -61,77 +66,72 @@ function displayGroup(groups) {
     return cell;
   }
 
-  groups.forEach((group) => {
-    const row = document.createElement("tr");
+  const row = document.createElement("tr");
 
-    const fields = ["name", "members", "agency", "debut_date", "fandom"];
+  const fields = ["name", "members", "agency", "debut_date", "fandom"];
 
-    fields.forEach((field) => {
-      row.appendChild(createCell(group[field]));
-    });
-
-    const actionsCell = document.createElement("td");
-    actionsCell.className = "action-button";
-
-    const updateBtn = document.createElement("button");
-    updateBtn.textContent = "Update";
-    updateBtn.className = "update-button";
-    updateBtn.onclick = () => {
-      updateId = group.id;
-      handleUpdate(updateId);
-    };
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.className = "delete-button";
-    deleteBtn.onclick = () => {
-        deleteGroup(group.id);
-    }
-
-    actionsCell.appendChild(updateBtn);
-    actionsCell.appendChild(deleteBtn);
-
-    row.appendChild(actionsCell);
-
-    tableBody.appendChild(row);
+  fields.forEach((field) => {
+    row.appendChild(createCell(group[field]));
   });
+
+  const actionsCell = document.createElement("td");
+  actionsCell.className = "action-button";
+
+  const updateBtn = document.createElement("button");
+  updateBtn.textContent = "Update";
+  updateBtn.className = "update-button";
+  updateBtn.onclick = () => {
+    handleUpdate(groupid);
+  };
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.className = "delete-button";
+  deleteBtn.onclick = () => {
+      deleteGroup(groupid);
+      return;
+  }
+
+  actionsCell.appendChild(updateBtn);
+  actionsCell.appendChild(deleteBtn);
+
+  row.appendChild(actionsCell);
+
+  tableBody.appendChild(row);
 }
 
 const handleUpdate = id => {
-    fetch(`${api}?id=${id}`) 
+    fetch(`${api}/${id}.json`) 
         .then((response) => response.json())
         .then((data) => {
-            const filteredData = data.filter(group => group.id == id);
-            const group = filteredData[0];
             addBtn.click();
-            document.querySelector("#name").value = group.name;
-            document.querySelector("#members").value = group.members;
-            document.querySelector("#agency").value = group.agency;
-            document.querySelector("#debut_date").value = group.debut_date;
-            document.querySelector("#fandom").value = group.fandom;
+            document.querySelector("#name").value = data.name;
+            document.querySelector("#members").value = data.members;
+            document.querySelector("#agency").value = data.agency;
+            document.querySelector("#debut_date").value = data.debut_date;
+            document.querySelector("#fandom").value = data.fandom;
             save.style.display = "block";
             submit.style.display = "none";
+            groupToUpdate = id;
         })
         .catch((error) => console.error("Error:", error));
 }
 
 const handleSave = () => {
     let groupData = {
-        id: updateId,
         name: document.querySelector("#name").value,
         members: document.querySelector("#members").value,
         agency: document.querySelector("#agency").value,
         debut_date: document.querySelector("#debut_date").value,
         fandom: document.querySelector("#fandom").value,
-        action: "PATCH"
     };
 
-    fetch(api, {
-        method: "POST",
+    fetch(`${api}/${groupToUpdate}.json`, {
+        method: "PATCH",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams(groupData).toString(),
+        body: JSON.stringify(groupData),
     })
         .then(() => getGroups())
         .catch((error) => {
@@ -142,24 +142,25 @@ const handleSave = () => {
     submit.style.display = "block";
     save.style.display = "none";
     addBtn.click();
+    groupToUpdate = 0;
 }
 
 function deleteGroup(id) {
-  let groupData = {
-      id: id,
-      action: "DELETE",
-  };
-
-  fetch(api, {
-    method: "POST",
+  fetch(`${api}/${id}.json`, {
+    method: "DELETE",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
     },
-    body: new URLSearchParams(groupData).toString(),
   })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(() => getGroups())
     .catch((error) => {
-      console.error("Error parsing JSON:", error);
+      console.error("Error deleting group:", error);
     });
 }
 
