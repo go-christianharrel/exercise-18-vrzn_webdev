@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
   --primary-color: #00a8e8;
@@ -11,7 +11,7 @@
 }
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -28,9 +28,11 @@ a {
 nav {
   width: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: #ffffff;
   z-index: 99;
-  display: none;
+  display: flex;
 }
 
 .nav-content {
@@ -40,6 +42,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 nav .logo a {
@@ -51,6 +54,37 @@ nav .logo a {
 
 nav .logo a:hover {
   color: var(--primary-color-dark);
+}
+
+nav .checkbox {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin: 5px 0;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+#check:checked + .menu-toggle .bar:nth-child(1) {
+  transform: rotate(-50deg) translate(-12px, 8px);
+}
+
+#check:checked + .menu-toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+
+#check:checked + .menu-toggle .bar:nth-child(3) {
+  transform: rotate(50deg) translate(-11px, -8px);
 }
 
 ul {
@@ -75,7 +109,7 @@ ul li a:hover {
 }
 
 .profile-container {
-  min-height: 80vh;
+  min-height: 100vh;
   max-width: var(--max-width);
   margin: auto;
   padding: 1rem;
@@ -107,13 +141,28 @@ ul li a:hover {
 }
 
 .profile-title span {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--primary-color);
 }
 
 .profile-description {
   line-height: 1.5rem;
   color: var(--text-light);
+  margin-bottom: 15px;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socials a:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.socials img {
+  width: 60px;
 }
 
 .profile-image {
@@ -142,8 +191,8 @@ ul li a:hover {
 
 .container .box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 25px;
 }
 
 .container .box-container .box,
@@ -171,6 +220,42 @@ ul li a:hover {
   line-height: 1.8;
 }
 
+.container .box-container .box a,
+.show-popup {
+  display: inline-block;
+  margin-top: 10px;
+  background: var(--primary-color);
+  color: var(--extra-light);
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.show-popup.letter {
+  grid-column: span 3;
+  background: #ffffff;
+  color: var(--text-dark);
+  padding: 20px 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.show-popup.letter:hover {
+  background: var(--primary-color);
+  color: var(--extra-light);
+}
+
+.container .box-container .box a:hover,
+.box-two:hover,
+.show-popup:hover,
+.popup-box .close-btn:hover {
+  background: var(--primary-color-dark);
+}
+
 .container .box-container .box,
 .box-two:hover {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
@@ -189,13 +274,20 @@ ul li a:hover {
 }
 
 .box-two {
-  background: var(--primary-color-dark);
+  background: var(--primary-color);
+  border-radius: 25px;
+}
+
+.box-two img {
+  height: 150px;
+  width: 100%;
+  align-self: baseline;
+  border-radius: 12px;
 }
 
 .container .box-container .box-two h3 {
   color: var(--extra-light);
   font-size: 22px;
-  padding: 10px 0;
 }
 
 .testimonials-grid {
@@ -219,6 +311,15 @@ ul li a:hover {
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-dark);
+}
+
+.name a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+.name a:hover {
+  color: inherit; 
 }
 
 .card hr {
@@ -257,8 +358,71 @@ ul li a:hover {
 }
 
 .gallery img {
-  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(3s, 2fr);
+  width: 500px;
   border-radius: 10px;
+}
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup-container.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease;
+}
+
+.popup-container .popup-box {
+  max-width: 60%;
+  max-height: 70%;
+  width: 100%;
+  background: var(--extra-light);
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transform: scale(0);
+  transition: transform 0.4s ease;
+  overflow-y: auto;
+}
+
+.popup-container.active .popup-box {
+  transform: scale(1);
+}
+
+.popup-box h1 {
+  color: var(--text-dark);
+  line-height: 1;
+}
+
+.popup-box p {
+  color: var(--text-light);
+  margin: 12px 0 20px;
+}
+
+.popup-box .close-btn {
+  width: 100%;
+  height: 45px;
+  background: var(--primary-color);
+  color: var(--extra-light);
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .sort-option,
@@ -307,8 +471,86 @@ ul li a:hover {
   cursor: not-allowed;
 }
 
-@media (min-width: 768px) {
-  nav {
-    display: block;
+@media (max-width: 750px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  ul {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 85px);
+    left: -100%;
+    top: 85px;
+    background-color: var(--extra-light);
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  nav #check:checked ~ ul {
+    left: 0;
+  }
+
+  ul li {
+    margin: 0;
+  }
+
+  .profile-container {
+    padding: 10rem 1rem 5rem 1rem;
+    text-align: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .profile-image {
+    grid-area: 1;
+  }
+
+  .container .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 15px;
+  }
+
+  .container .heading {
+    font-size: 30px;
+  }
+
+  .socials {
+    margin: auto;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery img {
+    display: grid;
+    grid-template-columns: repeat(3s, 2fr);
+    width: 260px;
+    border-radius: 10px;
+  }
+
+  .show-popup.letter {
+    grid-column: span 1;
+    grid-area: 1;
+  }
+
+  .popup-container .popup-box {
+    max-width: 270px;
+    max-height: 70%;
+    padding: 15px;
+  }
+
+  .popup-box h1 {
+    font-size: 16px;
+  }
+
+  .popup-box p {
+    font-size: 14px;
+  }
+
+  .popup-box .close-btn {
+    font-size: 16px;
   }
 }
