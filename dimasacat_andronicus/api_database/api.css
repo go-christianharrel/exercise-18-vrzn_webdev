@@ -89,6 +89,7 @@ h2 {
   width: 100%;
   margin-top: 50px;
   overflow-x:auto;
+  margin-bottom: 30px;
 }
 
 table {
@@ -106,7 +107,7 @@ th {
   background-color: #d5d8d8;
 }
   
-#update_button {
+.update-button {
   background-color: #47d34c;
   border: none;
   color: white;
@@ -118,11 +119,11 @@ th {
   cursor: pointer;
 }
 
-#update_button:hover {
+.update-button:hover {
   background-color: #2c862f;
 }
 
-#delete_button {
+.delete-button {
   background-color: #d44e45;
   border: none;
   color: white;
@@ -134,78 +135,8 @@ th {
   cursor: pointer;
 }
   
-#delete_button:hover {
+.delete-button:hover {
   background-color: #702924;
-}
-
-#update_character_form {
-  display: none;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  margin-bottom: 50px;
-}
-  
-#update_character_form h3 {
-  text-align: center;
-  font-size: 15px;
-}
-
-#update_form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
-
-#update_form input {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 70%;
-}
-
-#update_form select {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 70%;
-}
-
-#update_form select option {
-  padding: 5px;
-  text-align: center;
-}
-
-#update_form select:focus {
-  outline: none;
-  border-color: #34ccab; 
-}
-
-#update_form select:hover {
-  border-color: #228872;
-}
-
-#update_form button {
-  background-color: #34ccab;
-  color: #fff;
-  width: 200px;
-  padding: 5px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#update_form button:hover {
-  background-color: #228872;
-}
-  
-#update_form button,
-#update_form button + button {
-  margin-top: 10px;
 }
 
 @media (min-width: 1024px) {
@@ -232,24 +163,4 @@ th {
   #add_form button {
     width: 200px;
   }
-  
-  #update_character_form {
-    padding: 15px;
-    width: 80%;
-  }
-    
-  #_update_character_form h3 {
-    font-size: x-large;
-  }
-  
-  #update_form input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 90%;
-  }
-
-  #update_form button {
-    width: 200px;
-    }
 }

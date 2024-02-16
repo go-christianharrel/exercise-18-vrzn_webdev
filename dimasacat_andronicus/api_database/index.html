@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Genshin Impact Database</title>
+    <link rel="stylesheet" href="./api.css"/>
+  </head>
+  <body>
+    <div class="main-container">
+      <h2>Genshin Impact Character Database</h2>
+      <div id="character_form">
+        <h3>Character Details</h3>
+        <form id="add_form">
+          <input type="text" id="character_name"
+            placeholder="Enter Character Name" required/>
+					<select id="weapon" required>
+						<option value="">--Choose a Weapon--</option>
+						<option value="Bow">Bow</option>
+						<option value="Catalyst">Catalyst</option>
+						<option value="Claymore">Claymore</option>
+						<option value="Polearm">Polearm</option>
+						<option value="Sword">Sword</option>
+						<option value="Unknown">Unknown</option>
+					</select>   
+					<select id="vision" required>
+						<option value="">--Choose a Vision--</option>
+						<option value="Anemo">Anemo</option>
+						<option value="Cryo">Cryo</option>
+						<option value="Dendro">Dendro</option>
+						<option value="Electro">Electro</option>
+						<option value="Geo">Geo</option>
+						<option value="Hydro">Hydro</option>
+						<option value="Pyro">Pyro</option>
+						<option value="Unknown">Unknown</option>
+					</select> 
+          			<select id="gender" required>
+          			  <option value="">--Choose a Gender--</option>
+          			  <option value="Male">Male</option>
+          			  <option value="Female">Female</option>
+          			  <option value="Unknown">Unknown</option>
+          			</select>
+					<select id="region" required>
+						<option value="">--Choose a Region--</option>
+						<option value="Fontaine">Fontaine</option>
+						<option value="Inazuma">Inazuma</option>
+						<option value="Khaenri'ah">Khaenri'ah</option>
+						<option value="Liyue">Liyue</option>
+						<option value="Mondstadt">Mondstadt</option>
+						<option value="Natlan">Natlan</option>
+						<option value="Snezhnaya">Snezhnaya</option>
+						<option value="Sumeru">Sumeru</option>
+						<option value="Unknown">Unknown</option>
+					</select>             
+          <button type="button" 
+            onclick="addCharacter()">Submit</button>
+        </form>
+      </div>
+      <div class="table-container">
+        <table>
+			<thead>
+				<tr>
+					<th>Character Name</th>
+					<th>Weapon</th>
+					<th>Vision</th>
+					<th>Gender</th>
+					<th>Region</th>
+					<th>Modify</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody id="character_list"></tbody>
+		</table> 
+      </div>
+    </div>
+    <script src="./api.js"></script>
+  </body>
+</html>
