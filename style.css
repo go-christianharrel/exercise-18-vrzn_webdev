@@ -68,10 +68,6 @@
 .icons i:hover {
   transform: scale(1.2);
 }
-.box:hover {
-  transform: translateY(-10px);
-  cursor: pointer;
-}
 
 /* Floating message styles */
 .floating-message {
