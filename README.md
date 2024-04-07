@@ -8,7 +8,7 @@
 
 ### Explore our website on:
 
-[![Netlify](https://img.shields.io/badge/Netlify-Visit-brightgreen?style=for-the-badge&logo=netlify)](https://vrzn.netlify.app/)
+[![Netlify](https://img.shields.io/badge/Netlify-Visit-brightgreen?style=for-the-badge&logo=netlify)](https://teamvrzn.netlify.app/)
 
 </div>
 
